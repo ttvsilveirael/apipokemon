@@ -70,8 +70,20 @@ class database {
             database: "pokemon",
             Promise: bluebird
         });
-        const [rows, fields] = await connection.query(`insert into ${tabela} (${colunas}) values (${values})`);
-        return "Dado adicionado com sucesso"
+        const [rows, fields] = await connection.execute(`insert into ${tabela} (${colunas}) values (${values})`);
+        return rows;
+    }
+
+    static async deleteAll(tabela) {
+        const connection = await mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: "Test@123",
+            database: "pokemon",
+            Promise: bluebird
+        });
+        const [rows, fields] = await connection.execute(`delete from ${tabela}`)
+        return rows;
     }
 
     static async delete(tabela, id) {
@@ -83,7 +95,7 @@ class database {
             Promise: bluebird
         });
         const [rows, fields] = await connection.execute(`delete from ${tabela} where id = ${id}`)
-        return `Dado deletado com sucesso.`
+        return rows;
     }
 
     /**

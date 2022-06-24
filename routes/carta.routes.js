@@ -47,7 +47,7 @@ class CardRoutes {
         handler: async (request, reply) => {
             let jsonCard = request.body;
             let card = new Card(null, jsonCard['nome'], jsonCard['type'], jsonCard['text'], jsonCard['image']);
-            return CardController.insertCard(card);
+            return await CardController.insertCard(card);
         }
     },
     {
@@ -58,6 +58,13 @@ class CardRoutes {
             return CardController.deleteCard(id)
         }
     },
+    {
+        method: 'DELETE',
+        url: '/card',
+        handler: async (request, reply) => {
+            return CardController.deleteAll()
+        }
+    }
     ]
 }
 

@@ -15,10 +15,14 @@ class CardController {
      *
      * @param novaCard Carta a ser adicionada Object:Card
      */
-    static insertCard(novaCard) {
-        return database.insert('cards', 'nome, type, image, text', `'${novaCard.nome}', '${novaCard.type}', '${novaCard.image}', "${novaCard.text}"`);
+    static async insertCard(novaCard) {
+        return await database.insert('cards', 'nome, type, image, text', `"${novaCard.nome}", "${novaCard.type}", "${novaCard.image}", "${novaCard.text}"`);
     }
 
+    static deleteAll(){
+        return database.deleteAll('cards');
+    }
+    
     /**
      * Delete uma carta pelo ID
      *
