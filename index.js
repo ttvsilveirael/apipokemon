@@ -1,9 +1,11 @@
-const CardController = require('./controllers/carta.controller');
 const CardRoutes = require('./routes/carta.routes');
 
 const fastify = require('fastify')({ logger: true });
 
-function addRoutes(){
+fastify.register(require("fastify-cors"), {
+    origin: true
+});
+function addRoutes() {
     CardRoutes.routes.forEach(route => fastify.route(route));
 }
 

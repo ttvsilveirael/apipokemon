@@ -12,6 +12,7 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "fastify": "^4.1.0",
+    "fastify-cors": "^3.0.0",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
